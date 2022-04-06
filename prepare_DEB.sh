@@ -253,17 +253,20 @@ do_Restart_query() {
 do_Restart() {
     echo -n -e "Rebooting in 1 minute.\r"
     if [[ "${Restart}" = "yes" ]]; then
-        reboot
+        shutdown -r 1 >> ${logfile} 2>&1
+		  echo_OK
     else
         echo_Skipped
     fi
 }
 
 Ubuntu() {
-    echo "Installing Repository: open-ssh-server"
+    echo -n -e "Installing Repository: open-ssh-server.\r"
     apt install -y open-ssh-server >> ${logfile} 2>&1
-	 echo "Installing Repository: vim"
+	 echo_Done
+	 echo -n -e "Installing Repository: vim.\r"
 	 apt install -y vim >> ${logfile} 2>&1
+	 echo_Done
 }
 
 # +----- Main --------------------------------------------------------------+
