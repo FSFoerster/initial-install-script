@@ -245,6 +245,22 @@ Ufw_disable() {
         echo_Skipped
     fi
 }
+Dotfiles_query() {
+	 DownloadDotfiles="$(antwoord "Do you want to get dotfiles downloaded? ${YN}")"
+}
+
+Dotfiles_download() {
+    echo -n -e "Downloading dotfiles.\r"
+	 if [[ "${DownloadDotfiles}" = "yes" ]]; then
+		  mkdir Repos/myown/
+		  cd Repos/myown/
+		  git clone https://github.com/FSFoerster/.dotfiles.git
+		  cp .dotfiles/.* ~/
+		  echo_Done
+	 else
+		  echo_Skipped
+	 fi
+}
 
 do_Restart_query() {
     Restart="$(antwoord "Don't forget to reboot the system. Reboot now? ${YN}")"
