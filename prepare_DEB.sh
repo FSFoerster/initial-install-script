@@ -301,20 +301,22 @@ if [[ "${os}" = "Linux" ]]; then
         "Ubuntu" )
             GoogleChrome_query
             Remmina_query
-				VmTools_query
+	    VmTools_query
             HostName_query
             Ufw_query
+	    Dotfiles_query
             SshRootLogin_query
 
             echo_title "Prepare"
 
             GoogleChrome_install
             Remmina_install
-				VmTools_install
+	    VmTools_install
             HostName_set
             Ufw_disable
+	    Dotfiles_download
             SshRootLogin_disable
-				Ubuntu
+	    Ubuntu
             LogfileLocation
             ;;
     esac
