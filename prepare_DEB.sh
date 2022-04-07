@@ -252,10 +252,10 @@ Dotfiles_query() {
 Dotfiles_download() {
     echo -n -e "Downloading dotfiles.\r"
 	 if [[ "${DownloadDotfiles}" = "yes" ]]; then
-		  mkdir Repos/myown/
-		  cd Repos/myown/
-		  git clone https://github.com/FSFoerster/.dotfiles.git
-		  cp .dotfiles/.* ~/
+		  mkdir -p Repos/myown/ >> ${logfile} 2>&1
+		  cd Repos/myown/ >> ${logfile} 2>&1
+		  git clone https://github.com/FSFoerster/.dotfiles.git >> ${logfile} 2>&1
+		  cp .dotfiles/.* ~/ >> ${logfile} 2>&1
 		  echo_Done
 	 else
 		  echo_Skipped
